@@ -10,6 +10,10 @@ import * as _ from "lodash";
             <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(1)">
                 <a class="page-link" style="cursor: pointer">&laquo;</a>
             </li>
+  <li class="page-item" [class.disabled]="p.activePage <= 1" >
+               <a  *ngIf="p.activePage <= 1" class="page-link" style="cursor: pointer"> &lt; </a>
+			   <a (click)="p.setPage(p.activePage - 1)" *ngIf="p.activePage > 1" class="page-link" style="cursor: pointer"> &lt; </a>      </li>
+          
             <li class="page-item" *ngIf="p.activePage > 4 && p.activePage + 1 > p.lastPage" (click)="p.setPage(p.activePage - 4)">
                 <a class="page-link" style="cursor: pointer">{{p.activePage-4}}</a>
             </li>
@@ -37,6 +41,9 @@ import * as _ from "lodash";
             <li class="page-item" *ngIf="p.activePage + 4 <= p.lastPage && p.activePage < 2" (click)="p.setPage(p.activePage + 4)">
                 <a class="page-link" style="cursor: pointer">{{p.activePage+4}}</a>
             </li>
+ <li class="page-item" [class.disabled]="p.activePage >= p.lastPage" >
+ <a *ngIf="p.activePage >= p.lastPage"   class="page-link" style="cursor: pointer"> &gt; </a>
+ <a *ngIf="p.activePage < p.lastPage"  (click)="p.setPage(p.activePage + 1)" class="page-link" style="cursor: pointer"> &gt; </a> </li> 
             <li class="page-item" [class.disabled]="p.activePage >= p.lastPage" (click)="p.setPage(p.lastPage)">
                 <a class="page-link" style="cursor: pointer">&raquo;</a>
             </li>
